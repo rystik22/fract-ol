@@ -1,96 +1,30 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: clucien <clucien@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/27 12:13:59 by clucien           #+#    #+#              #
-#    Updated: 2020/06/18 12:23:44 by clucien          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	=	fractol
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+RM		=	rm	-rf
 
-NAME		=	fract-ol
+SRCS 	=	main.c mandelbrot.c julia.c renderer.c controls.c tricorn.c utils.c
 
-FILES_C		=	\
-				draw.c \
-				hook.c \
-				quit.c \
-				iterate.c \
-				main.c \
-				parsing.c \
-				routers.c \
-				window.c
+GREEN	=	\033[1;32m
+RESET	=	\033[0m
 
-FILES_B		=	\
-				draw.c \
-				hook_bonus.c \
-				quit.c \
-				iterate.c \
-				main_bonus.c \
-				parsing.c \
-				routers.c \
-				window.c
+all: $(NAME)
 
-DIR_C		=	srcs/
+%.o: %.c
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-SRCS		=	$(addprefix $(DIR_C), $(FILES_C))
-SRCS_B		=	$(addprefix $(DIR_C), $(FILES_B))
+$(NAME): $(SRCS)
+	$(MAKE) all -C mlx
+	$(CC) $(CFLAGS) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "$(GREEN)Compilation finished: Try  ./$(NAME) [0, 1, 2]$(RESET)"
 
-OBJS		=	$(SRCS:.c=.o)
-OBJS_B		=	$(SRCS_B:.c=.o)
+clean:
+	$(MAKE) clean -C mlx
 
-LIBFT		=	libft/libft.a
+fclean: clean
+	$(RM) $(NAME)
+	$(MAKE) clean -C mlx
 
-CC			=	gcc -Wall -Wextra -Werror
+re: fclean $(NAME)
 
-MLX_FLG		=	-LminilibX -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
-
-.SILENT		:
-
-$(NAME)		:	minilib lib mandatory
-
-all			:	$(NAME)
-
-bonus		:	minilib lib bonus_part
-
-lib			:
-		cd libft ; make ; cd .. 
-
-minilib		:
-		cd minilibX ; ./configure ; cd ..
-
-print_s		:
-		echo -n "srcs: "
-print_b		:
-		echo -n "srcs bonuses: "
-printv		: 
-		echo " ✓"
-
-.c.o		:
-		echo -n "#"
-		$(CC) -c $< -o $(<:.c=.o)
-
-mandatory	: print_s $(OBJS) printv
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLG)
-
-bonus_part	: print_b $(OBJS_B) printv
-	$(CC) -o $(NAME) $(OBJS_B) $(LIBFT) $(MLX_FLG)
-
-clean		:
-		rm -f $(OBJS)
-		rm -f $(OBJS_B)
-		cd libft ; make clean ; cd ..
-		echo "Clean ✓"
-
-fclean		:	clean
-		rm -f $(NAME)
-		cd libft ; make fclean ; cd ..
-		rm -rf *.dSYM
-		rm -rf *.vscode
-
-aclean		:	all clean
-
-re			:	fclean all
-
-.PHONY		:	all clean fclean aclean re
+.PHONY = all clean fclean re

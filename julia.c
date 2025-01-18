@@ -6,20 +6,19 @@
 /*   By: rradin-m <rradin-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:04:45 by rradin-m          #+#    #+#             */
-/*   Updated: 2025/01/10 16:43:55 by rradin-m         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:34:17 by rradin-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "fractol.h"
 
 static	void	algorithm(t_data *img, int w, int h)
 {
 	double	zx;
-	double	zy; 
+	double	zy;
 
-	zx = compute_x0(img, w);
-	zy = compute_y0(img, h);
+	zx = get_x0(img, w);
+	zy = get_y0(img, h);
 	img->xtemp = 0.0;
 	img->iteration = 0;
 	img->max_iteration = 300;
@@ -42,10 +41,10 @@ void	show_julia(t_data *img)
 	int	h;
 	int	w;
 
-	h = 0;
+	h = 5;
 	while (h < img->height)
 	{
-		w = 0;
+		w = 5;
 		while (w < img->width)
 		{
 			algorithm(img, w, h);

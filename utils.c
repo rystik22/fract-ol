@@ -6,11 +6,10 @@
 /*   By: rradin-m <rradin-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:07:10 by rradin-m          #+#    #+#             */
-/*   Updated: 2025/01/10 14:58:47 by rradin-m         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:01:09 by rradin-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "fractol.h"
 
 double	ft_pow(int base, unsigned int pow)

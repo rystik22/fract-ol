@@ -6,14 +6,13 @@
 /*   By: rradin-m <rradin-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:05:20 by rradin-m          #+#    #+#             */
-/*   Updated: 2025/01/10 18:18:30 by rradin-m         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:33:10 by rradin-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "fractol.h"
 
-int	mouse(int mouse_key_code, int x, int y, t_data *img)
+int	mouse_scroll(int mouse_key_code, int x, int y, t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
 	if (mouse_key_code == 5)
@@ -81,8 +80,6 @@ int	keypad(int keycode, t_data *img)
 	else if (keycode == 18)
 		color_change(img, 0x4169E1FF);
 	else if (keycode == 19)
-		color_change(img, 0x32CD32FF);
-	else if (keycode == 20)
 		color_change(img, 0xDC143CFF);
 	else if (keycode == 49)
 		img->stop = 1;

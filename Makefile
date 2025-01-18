@@ -1,6 +1,6 @@
 NAME	=	fractol
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 RM		=	rm	-rf
 
 SRCS 	=	main.c mandelbrot.c julia.c renderer.c controls.c tricorn.c utils.c
@@ -16,7 +16,7 @@ all: $(NAME)
 $(NAME): $(SRCS)
 	$(MAKE) all -C mlx
 	$(CC) $(CFLAGS) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(GREEN)Compilation finished: Try  ./$(NAME) [0, 1, 2]$(RESET)"
+	@echo "$(GREEN)Compilation finished: Try  ./$(NAME) "0/ 1/ 2" or any two double "-1.0" "0.5"$(RESET)"
 
 clean:
 	$(MAKE) clean -C mlx

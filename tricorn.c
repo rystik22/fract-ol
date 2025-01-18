@@ -6,11 +6,10 @@
 /*   By: rradin-m <rradin-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:06:38 by rradin-m          #+#    #+#             */
-/*   Updated: 2025/01/08 22:30:36 by rradin-m         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:59:36 by rradin-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "fractol.h"
 
 static	void	algorithm(t_data *img, int w, int h)
@@ -23,11 +22,10 @@ static	void	algorithm(t_data *img, int w, int h)
 	img->xtemp = 0.0;
 	img->iteration = 0;
 	img->max_iteration = 100;
-	img->offset = 0.05;
-	while (x * x + y * y <= 1 * 2 && img->iteration < img->max_iteration)
+	while (x * x + y * y <= 4 && img->iteration < img->max_iteration)
 	{
-		img->xtemp = x * x - y * y + compute_x0(img, w);
-		y = -2.0 * x * y + compute_y0(img, h);
+		img->xtemp = x * x - y * y + get_x0(img, w);
+		y = -2.0 * x * y + get_y0(img, h);
 		x = img->xtemp;
 		img->iteration += 1;
 	}
@@ -47,7 +45,7 @@ void	show_tricorn(t_data *img)
 	while (h < img->height)
 	{
 		w = 5;
-		compute_y0(img, h);
+		get_y0(img, h);
 		while (w < img->width)
 		{
 			algorithm(img, w, h);

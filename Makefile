@@ -1,6 +1,6 @@
 NAME	=	fractol
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CC		= cc
+CFLAGS	=	-Wall -Wextra -Werror
 RM		=	rm	-rf
 
 SRCS 	=	main.c mandelbrot.c julia.c renderer.c controls.c tricorn.c utils.c

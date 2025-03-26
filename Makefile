@@ -1,7 +1,7 @@
 NAME	=	fractol
 CC		= cc
 CFLAGS	=	-Wall -Wextra -Werror
-RM		=	rm	-rf
+RM	=	rm	-rf
 
 SRCS 	=	main.c mandelbrot.c julia.c renderer.c controls.c tricorn.c utils.c
 

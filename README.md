@@ -1,6 +1,6 @@
-# Fractol
+# Fract-ol
 
-Fractol is a fractal exploration program developed as part of the 42 Abu Dhabi curriculum. It visualizes complex mathematical sets with interactive controls, allowing zoom, movement, color changes, and dynamic transformations.
+Fract-ol is a fractal exploration program developed as part of the 42 Abu Dhabi curriculum. It visualizes complex mathematical sets with interactive controls, allowing zoom, movement, color changes, and dynamic transformations.
 
 ## Fractals Implemented
 - **Mandelbrot Set:** Zoom and navigate through the intricate patterns of the Mandelbrot set.
@@ -18,7 +18,7 @@ Fractol is a fractal exploration program developed as part of the 42 Abu Dhabi c
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fractol.git
+   git clone https://github.com/rystik22/fractol.git
    cd fractol
    ```
 2. Ensure MiniLibX is in the root directory. This project is compatible with macOS MiniLibX. Linux compatibility may require additional adjustments.
@@ -45,8 +45,8 @@ Understanding MiniLibX is crucial for this project. A great resource is availabl
 - The project is built for macOS and may not run on Linux without changes to the MiniLibX setup.
 
 ## Credits
-- **Author:** Raneem
-- **School:** 42 Abu Dhabi
+- **Author:** rradin-m
+- **School:** 42AD
 
 Enjoy exploring the mesmerizing world of fractals!
 
